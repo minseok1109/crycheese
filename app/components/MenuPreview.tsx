@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap/register";
@@ -68,6 +68,31 @@ const cardSizes: Record<TabType, { width: string; imageHeight: string }> = {
 
 export default function MenuPreview(): React.ReactElement {
 	const [activeTab, setActiveTab] = useState<TabType>("BURGER");
+	const tabContentRef = useRef<HTMLDivElement>(null);
+
+	const handleTabChange = (tab: TabType) => {
+		if (tab === activeTab) return;
+
+		// 먼저 탭 상태 변경
+		setActiveTab(tab);
+
+		// 다음 틱에서 애니메이션 실행
+		setTimeout(() => {
+			if (tabContentRef.current) {
+				gsap.fromTo(
+					tabContentRef.current.querySelectorAll(".tab-menu-card"),
+					{ opacity: 0, y: 20 },
+					{
+						opacity: 1,
+						y: 0,
+						duration: 0.3,
+						stagger: 0.1,
+						ease: "power3.out",
+					}
+				);
+			}
+		}, 0);
+	};
 
 	useGSAP(() => {
 		gsap.from(".menu-title", {
@@ -227,7 +252,7 @@ export default function MenuPreview(): React.ReactElement {
 							<button
 								type="button"
 								key={tab.id}
-								onClick={() => setActiveTab(tab.id)}
+								onClick={() => handleTabChange(tab.id)}
 								className={`relative text-xs font-semibold tracking-[2px] pb-2 transition-colors ${
 									activeTab === tab.id
 										? "text-[#0D0D0D]"
@@ -245,7 +270,7 @@ export default function MenuPreview(): React.ReactElement {
 				</div>
 
 				{/* Tab Content */}
-				<div className="tab-content flex flex-wrap gap-6">
+				<div ref={tabContentRef} className="tab-content flex flex-wrap gap-6">
 					{menusByCategory[activeTab].map((menu) => {
 						const sizes = cardSizes[activeTab];
 						return (
