@@ -15,7 +15,7 @@ interface MenuItem {
 
 const recommendedMenus: MenuItem[] = [
 	{
-		name: "싱글치즈버거",
+		name: "싱글 치즈버거",
 		image: "/menu-single-cheese.png",
 	},
 	{
@@ -23,29 +23,28 @@ const recommendedMenus: MenuItem[] = [
 		image: "/menu-double-cheese.png",
 	},
 	{
-		name: "치킨샌드위치",
+		name: "치킨 샌드위치",
 		image: "/menu-chicken-sandwich.png",
 	},
 ];
 
 const burgerMenus: MenuItem[] = [
-	{ name: "싱글치즈버거", image: "/single_cheeseburger.png" },
+	{ name: "싱글 치즈버거", image: "/single_cheeseburger.png" },
 	{ name: "더블치즈버거", image: "/double_cheeseburger.png" },
-	{ name: "치킨샌드위치", image: "/menu-chicken-sandwich.png" },
-	{ name: "불치킨샌드위치", image: "/spicy_chicken_burger.png" },
+	{ name: "치킨 샌드위치", image: "/menu-chicken-sandwich.png" },
+	{ name: "불치킨 샌드위치", image: "/spicy_chicken_burger.png" },
 ];
 
 const sideMenus: MenuItem[] = [
-	{ name: "크라이치킨접시", image: "/menu-cry-chicken.png" },
+	{ name: "크라이 치킨접시", image: "/menu-cry-chicken.png" },
 	{ name: "치즈감자", image: "/menu-cheese-potato.png" },
 	{ name: "치킨핑거", image: "/menu-chicken-finger.png" },
+	{ name: "불치킨핑거", image: "/menu-spicy-chicken-finger.png" },
 ];
 
 const setMenus: MenuItem[] = [
-	{ name: "싱글치즈버거세트", image: "/menu-single-set.png" },
-	{ name: "더블치즈버거세트", image: "/menu-double-set.png" },
-	{ name: "치킨샌드위치세트", image: "/menu-chicken-set.png" },
-	{ name: "불치킨샌드위치세트", image: "/menu-spicy-chicken-set.png" },
+	{ name: "치즈버거세트", image: "/menu-single-set.png" },
+	{ name: "치킨샌드위치 세트", image: "/menu-chicken-set.png" },
 ];
 
 const tabs: { id: TabType; label: string }[] = [
