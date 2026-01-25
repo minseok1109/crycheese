@@ -1,11 +1,12 @@
 "use client";
 
 import { useGSAP } from "@gsap/react";
-import { gsap } from "@/lib/gsap/register";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
+import { gsap } from "@/lib/gsap/register";
 import { scrollToElement } from "@/lib/utils/scroll";
+
 
 export default function Hero(): React.ReactElement {
 	const containerRef = useRef<HTMLElement>(null);
@@ -71,6 +72,7 @@ export default function Hero(): React.ReactElement {
 						opacity: 1,
 						duration: 1.2,
 						ease: "expo.out",
+						stagger: 0.1,
 					},
 					"-=1.5",
 				);
@@ -124,12 +126,12 @@ export default function Hero(): React.ReactElement {
 				</div>
 
 				{/* Right: Image */}
-				<div className="hero-image relative w-full max-w-[500px] aspect-square rounded-3xl overflow-hidden">
+				<div className="hero-image relative w-full max-w-[280px] lg:max-w-[500px] aspect-square">
 					<Image
-						src="/catering-hero.png"
-						alt="크라이치즈버거 케이터링"
+						src="/double_cheeseburger.png"
+						alt="더블 치즈버거"
 						fill
-						className="object-cover"
+						className="object-contain"
 						priority
 					/>
 				</div>
