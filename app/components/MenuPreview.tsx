@@ -61,7 +61,7 @@ const menusByCategory: Record<TabType, MenuItem[]> = {
 };
 
 const cardSizes: Record<TabType, { width: string; imageHeight: string }> = {
-	BURGER: { width: "w-full sm:w-[280px]", imageHeight: "h-[200px]" },
+	BURGER: { width: "w-[calc(50%-12px)] sm:w-[280px]", imageHeight: "h-[200px]" },
 	SIDE: { width: "w-[calc(50%-12px)] sm:w-[200px]", imageHeight: "h-[140px]" },
 	SET: { width: "w-[calc(50%-12px)] sm:w-[200px]", imageHeight: "h-[140px]" },
 };
@@ -201,7 +201,7 @@ export default function MenuPreview(): React.ReactElement {
 
 				{/* Tab Navigation */}
 				<div className="tab-navigation flex flex-col gap-6">
-					<div className="flex gap-8">
+					<div className="flex gap-4 sm:gap-8">
 						{tabs.map((tab) => (
 							<button
 								type="button"
