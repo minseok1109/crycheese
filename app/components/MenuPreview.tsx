@@ -48,6 +48,12 @@ const setMenus: MenuItem[] = [
 	{ name: "불치킨샌드위치세트", image: "/menu-spicy-chicken-set.png" },
 ];
 
+const tabs: { id: TabType; label: string }[] = [
+	{ id: "BURGER", label: "BURGER" },
+	{ id: "SIDE", label: "SIDE" },
+	{ id: "SET", label: "SET" },
+];
+
 export default function MenuPreview(): React.ReactElement {
 	const [activeTab, setActiveTab] = useState<TabType>("BURGER");
 
@@ -200,6 +206,30 @@ export default function MenuPreview(): React.ReactElement {
 							</div>
 						))}
 					</div>
+				</div>
+
+				{/* Tab Navigation */}
+				<div className="tab-navigation flex flex-col gap-6">
+					<div className="flex gap-8">
+						{tabs.map((tab) => (
+							<button
+								type="button"
+								key={tab.id}
+								onClick={() => setActiveTab(tab.id)}
+								className={`relative text-xs font-semibold tracking-[2px] pb-2 transition-colors ${
+									activeTab === tab.id
+										? "text-[#0D0D0D]"
+										: "text-[#999999] hover:text-[#0D0D0D]"
+								}`}
+							>
+								{tab.label}
+								{activeTab === tab.id && (
+									<span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#F8B81C]" />
+								)}
+							</button>
+						))}
+					</div>
+					<div className="w-full h-px bg-[#E5E5E5]" />
 				</div>
 
 				{/* Burger Section */}
