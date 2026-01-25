@@ -1,28 +1,181 @@
+/* Pretendard Font */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
 @import "tailwindcss";
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0D0D0D;
+  --primary: #F8B81C;
+  --primary-dark: #E5A517;
+  --primary-foreground: #0D0D0D;
+  --secondary: #2C2C2C;
+  --secondary-foreground: #ffffff;
+  --muted: #FAF8F4;
+  --muted-alt: #F5F5F5;
+  --muted-foreground: #666666;
+  --muted-subtle: #6B6B6B;
+  --muted-quiet: #999999;
+  --border: #E5E5E5;
+  --border-light: #EEEEEE;
+  --input: #FAFAFA;
+  --ring: #F8B81C;
+  --radius: 0.75rem;
+  --footer-bg: #1A1A1A;
+  --footer-card: #2D2D2D;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --color-primary: #F8B81C;
-  --color-primary-foreground: #171717;
+  --font-sans: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  --font-mono: "Pretendard", monospace;
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-alt: var(--muted-alt);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted-subtle: var(--muted-subtle);
+  --color-muted-quiet: var(--muted-quiet);
+  --color-border: var(--border);
+  --color-border-light: var(--border-light);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-footer-bg: var(--footer-bg);
+  --color-footer-card: var(--footer-card);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #000000;
+    --foreground: #ffffff;
+    --primary: #F8B81C;
+    --primary-foreground: #000000;
+    --secondary: #ffffff;
+    --secondary-foreground: #000000;
+    --muted: #18181b;
+    --muted-foreground: #a1a1aa;
+    --border: #27272a;
+    --input: #27272a;
+    --ring: #F8B81C;
   }
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  word-break: keep-all; /* Korean typography best practice */
+}
+
+::selection {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+/* Custom Utilities */
+@layer utilities {
+  .tracking-tighter {
+    letter-spacing: -0.04em;
+  }
+  
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .glass {
+    @apply backdrop-blur-xl bg-white/80 border-white/20;
+  }
+  
+  .dark .glass {
+    @apply bg-black/80 border-white/10;
+  }
+  
+  .glass-card {
+    @apply bg-white/60 backdrop-blur-lg border border-white/20 shadow-xl;
+  }
+  
+  .dark .glass-card {
+    @apply bg-zinc-900/60 border-zinc-800/50;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-linear-to-r from-zinc-900 to-zinc-600;
+  }
+
+  .dark .text-gradient {
+    @apply bg-linear-to-r from-white to-zinc-400;
+  }
+  
+  .mask-gradient-b {
+    mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+  }
+
+  /* Pop Concept Utilities */
+  .text-mega {
+    @apply font-black tracking-tight leading-[0.9];
+  }
+
+  .shadow-pop {
+    box-shadow: 4px 4px 0px 0px var(--primary);
+  }
+  
+  .shadow-pop-hover {
+    @apply transition-all duration-300;
+  }
+  
+  .shadow-pop-hover:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px 0px var(--primary);
+  }
+
+  /* Soft Shadow for Cards */
+  .shadow-soft {
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.06);
+  }
+
+  .shadow-soft-lg {
+    box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .shadow-primary {
+    box-shadow: 0 4px 20px 0 rgba(248, 184, 28, 0.12);
+  }
+
+  .shadow-primary-lg {
+    box-shadow: 0 8px 30px 0 rgba(248, 184, 28, 0.18);
+  }
+
+  /* Primary Gradient */
+  .bg-primary-gradient {
+    background: linear-gradient(180deg, #F8B81C 0%, #E5A517 100%);
+  }
+
+  /* Section Backgrounds */
+  .bg-section-warm {
+    background-color: #FAF8F4;
+  }
+
+  .bg-section-cool {
+    background-color: #F5F5F5;
+  }
+}
+
+/* Base Styles Update */
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight text-balance font-bold;
+  }
 }
