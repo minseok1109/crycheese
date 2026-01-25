@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { inquirySchema } from "@/lib/schemas/inquiry";
+import { appendToGoogleSheet } from "@/lib/services/google-sheets";
 
 export async function POST(request: Request): Promise<NextResponse> {
 	try {
@@ -22,6 +23,7 @@ export async function POST(request: Request): Promise<NextResponse> {
 			referrerName,
 			companyName,
 			eventType,
+			eventTypeDetail,
 			deliveryDate,
 			deliveryTime,
 			deliveryAddress,
@@ -29,19 +31,16 @@ export async function POST(request: Request): Promise<NextResponse> {
 			message,
 		} = result.data;
 
-		// 1. Google Sheets 저장 로직 (환경변수 존재 시)
-		// const googleSheetId = process.env.GOOGLE_SHEETS_ID;
-		// if (googleSheetId) {
-		//   // TODO: Google Sheets API 연동
-		// }
+		await appendToGoogleSheet(result.data);
 
-		// 2. Slack 알림 전송
+		// Slack 알림 전송
 		const webhookUrl = process.env.SLACK_WEBHOOK_URL;
 		if (webhookUrl) {
 			const slackMessage = `📋 새 단체 주문 접수
 			
 • 담당자: ${name}
 • 단체명: ${companyName} (${eventType || "미지정"})
+• 행사유형: ${eventTypeDetail || "미지정"}
 • 연락처: ${contact}
 • 이메일: ${email}
 • 유입경로: ${referralSource}${referrerName ? ` (추천인: ${referrerName})` : ""}

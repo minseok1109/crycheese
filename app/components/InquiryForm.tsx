@@ -262,6 +262,7 @@ export default function InquiryForm(): React.ReactElement {
 								</label>
 								<select
 									id="eventTypeDetail"
+									{...register("eventTypeDetail")}
 									className={INPUT_STYLES}
 								>
 									<option value="">워크샵/세미나/행사/기타</option>

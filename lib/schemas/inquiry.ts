@@ -17,6 +17,7 @@ export const inquirySchema = z.object({
   // 조직 정보
   companyName: z.string().min(1, "단체명을 입력해주세요"),
   eventType: z.string().optional(),
+  eventTypeDetail: z.string().optional(),
 
   // 주문 정보
   deliveryDate: z.string().min(1, "배송 희망 날짜를 선택해주세요"),
