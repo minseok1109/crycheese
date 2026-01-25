@@ -1,4 +1,5 @@
 import CaseStudySection from "./components/CaseStudySection";
+import ClientsSection from "./components/ClientsSection";
 import EventSupportSection from "./components/EventSupportSection";
 import FAQSection from "./components/FAQSection";
 import FeatureSection from "./components/FeatureSection";
@@ -22,6 +23,7 @@ export default function Home(): React.ReactElement {
 				<OrderProcessSection />
 				<InquiryForm />
 				<FAQSection />
+				<ClientsSection />
 			</main>
 			<Footer />
 		</div>
