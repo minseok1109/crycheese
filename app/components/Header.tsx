@@ -17,7 +17,7 @@ export default function Header(): React.ReactElement {
 
 				<Link
 					href="#inquiry"
-					className="flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-base font-semibold text-black transition-all hover:bg-primary-dark hover:shadow-lg active:scale-95"
+					className="flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm md:px-6 md:py-3 md:text-base font-semibold text-black transition-all hover:bg-primary-dark hover:shadow-lg active:scale-95"
 					onClick={(e) => scrollToElement(e, "#inquiry")}
 				>
 					<span>단체 상담하기</span>

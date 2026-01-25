@@ -62,7 +62,7 @@ export default function FAQSection(): React.ReactElement {
 	};
 
 	return (
-		<section className="faq-section bg-white py-[100px] px-20">
+		<section className="faq-section bg-white py-[60px] px-4 md:py-[100px] md:px-20">
 			<div className="flex flex-col items-center gap-[60px]">
 				{/* Header */}
 				<div className="faq-header flex flex-col items-center gap-4">
