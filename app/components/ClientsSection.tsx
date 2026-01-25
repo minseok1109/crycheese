@@ -33,7 +33,30 @@ const clients = [
 
 export default function ClientsSection(): React.ReactElement {
 	useGSAP(() => {
-		// 애니메이션은 Task 3에서 추가
+		// Header animation
+		gsap.from(".clients-header", {
+			scrollTrigger: {
+				trigger: ".clients-section",
+				start: "top 80%",
+			},
+			y: 30,
+			opacity: 0,
+			duration: 0.8,
+			ease: "power3.out",
+		});
+
+		// Cards stagger animation
+		gsap.from(".client-card", {
+			scrollTrigger: {
+				trigger: ".clients-grid",
+				start: "top 80%",
+			},
+			y: 40,
+			opacity: 0,
+			duration: 0.6,
+			stagger: 0.1,
+			ease: "power3.out",
+		});
 	}, []);
 
 	return (
