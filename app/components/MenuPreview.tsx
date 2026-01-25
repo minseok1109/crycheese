@@ -54,6 +54,18 @@ const tabs: { id: TabType; label: string }[] = [
 	{ id: "SET", label: "SET" },
 ];
 
+const menusByCategory: Record<TabType, MenuItem[]> = {
+	BURGER: burgerMenus,
+	SIDE: sideMenus,
+	SET: setMenus,
+};
+
+const cardSizes: Record<TabType, { width: string; imageHeight: string }> = {
+	BURGER: { width: "w-full sm:w-[280px]", imageHeight: "h-[200px]" },
+	SIDE: { width: "w-[calc(50%-12px)] sm:w-[200px]", imageHeight: "h-[140px]" },
+	SET: { width: "w-[calc(50%-12px)] sm:w-[200px]", imageHeight: "h-[140px]" },
+};
+
 export default function MenuPreview(): React.ReactElement {
 	const [activeTab, setActiveTab] = useState<TabType>("BURGER");
 
@@ -230,6 +242,33 @@ export default function MenuPreview(): React.ReactElement {
 						))}
 					</div>
 					<div className="w-full h-px bg-[#E5E5E5]" />
+				</div>
+
+				{/* Tab Content */}
+				<div className="tab-content flex flex-wrap gap-6">
+					{menusByCategory[activeTab].map((menu) => {
+						const sizes = cardSizes[activeTab];
+						return (
+							<div
+								key={menu.name}
+								className={`tab-menu-card ${sizes.width} rounded-2xl bg-[#F5F5F5] overflow-hidden transition-transform hover:scale-[1.02]`}
+							>
+								<div className={`relative w-full ${sizes.imageHeight} bg-[#E0E0E0]`}>
+									<Image
+										src={menu.image}
+										alt={menu.name}
+										fill
+										className="object-cover"
+									/>
+								</div>
+								<div className="p-4">
+									<h3 className={`${activeTab === "BURGER" ? "text-lg" : "text-base"} font-semibold text-[#0D0D0D]`}>
+										{menu.name}
+									</h3>
+								</div>
+							</div>
+						);
+					})}
 				</div>
 
 				{/* Burger Section */}
