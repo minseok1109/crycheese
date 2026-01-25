@@ -1,10 +1,9 @@
 "use client";
 
-import { useState, useRef } from "react";
-
 import { useGSAP } from "@gsap/react";
-import { gsap } from "@/lib/gsap/register";
 import Image from "next/image";
+import { useRef, useState } from "react";
+import { gsap } from "@/lib/gsap/register";
 
 type TabType = "BURGER" | "SIDE" | "SET";
 
@@ -60,7 +59,10 @@ const menusByCategory: Record<TabType, MenuItem[]> = {
 };
 
 const cardSizes: Record<TabType, { width: string; imageHeight: string }> = {
-	BURGER: { width: "w-[calc(50%-12px)] sm:w-[280px]", imageHeight: "h-[200px]" },
+	BURGER: {
+		width: "w-[calc(50%-12px)] sm:w-[280px]",
+		imageHeight: "h-[200px]",
+	},
 	SIDE: { width: "w-[calc(50%-12px)] sm:w-[200px]", imageHeight: "h-[140px]" },
 	SET: { width: "w-[calc(50%-12px)] sm:w-[200px]", imageHeight: "h-[140px]" },
 };
@@ -87,7 +89,7 @@ export default function MenuPreview(): React.ReactElement {
 						duration: 0.3,
 						stagger: 0.1,
 						ease: "power3.out",
-					}
+					},
 				);
 			}
 		}, 0);
@@ -153,10 +155,7 @@ export default function MenuPreview(): React.ReactElement {
 	}, []);
 
 	return (
-		<section
-			id="menu"
-			className="bg-white py-[100px] px-6 lg:px-[120px]"
-		>
+		<section id="menu" className="bg-white py-[100px] px-6 lg:px-[120px]">
 			<div className="flex flex-col gap-12">
 				{/* Title */}
 				<h2 className="menu-title text-[42px] font-bold text-[#0D0D0D]">
@@ -219,7 +218,6 @@ export default function MenuPreview(): React.ReactElement {
 							</button>
 						))}
 					</div>
-					<div className="w-full h-px bg-[#E5E5E5]" />
 				</div>
 
 				{/* Tab Content */}
@@ -231,7 +229,9 @@ export default function MenuPreview(): React.ReactElement {
 								key={menu.name}
 								className={`tab-menu-card ${sizes.width} rounded-2xl bg-[#F5F5F5] overflow-hidden transition-transform hover:scale-[1.02]`}
 							>
-								<div className={`relative w-full ${sizes.imageHeight} bg-[#E0E0E0]`}>
+								<div
+									className={`relative w-full ${sizes.imageHeight} bg-[#E0E0E0]`}
+								>
 									<Image
 										src={menu.image}
 										alt={menu.name}
@@ -240,7 +240,9 @@ export default function MenuPreview(): React.ReactElement {
 									/>
 								</div>
 								<div className="p-4">
-									<h3 className={`${activeTab === "BURGER" ? "text-lg" : "text-base"} font-semibold text-[#0D0D0D]`}>
+									<h3
+										className={`${activeTab === "BURGER" ? "text-lg" : "text-base"} font-semibold text-[#0D0D0D]`}
+									>
 										{menu.name}
 									</h3>
 								</div>
