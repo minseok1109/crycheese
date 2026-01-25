@@ -129,66 +129,20 @@ export default function MenuPreview(): React.ReactElement {
 			ease: "power3.out",
 		});
 
-		gsap.from(".burger-section", {
+		gsap.from(".tab-navigation", {
 			scrollTrigger: {
-				trigger: ".burger-section",
+				trigger: ".tab-navigation",
 				start: "top 85%",
 			},
-			y: 30,
+			y: 20,
 			opacity: 0,
-			duration: 0.8,
+			duration: 0.6,
 			ease: "power3.out",
 		});
 
-		gsap.from(".burger-section .small-menu-card", {
+		gsap.from(".tab-content .tab-menu-card", {
 			scrollTrigger: {
-				trigger: ".burger-section",
-				start: "top 85%",
-			},
-			y: 40,
-			opacity: 0,
-			duration: 0.8,
-			stagger: 0.1,
-			ease: "power3.out",
-		});
-
-		gsap.from(".side-section", {
-			scrollTrigger: {
-				trigger: ".side-section",
-				start: "top 85%",
-			},
-			y: 30,
-			opacity: 0,
-			duration: 0.8,
-			ease: "power3.out",
-		});
-
-		gsap.from(".side-section .small-menu-card", {
-			scrollTrigger: {
-				trigger: ".side-section",
-				start: "top 85%",
-			},
-			y: 40,
-			opacity: 0,
-			duration: 0.8,
-			stagger: 0.1,
-			ease: "power3.out",
-		});
-
-		gsap.from(".set-section", {
-			scrollTrigger: {
-				trigger: ".set-section",
-				start: "top 85%",
-			},
-			y: 30,
-			opacity: 0,
-			duration: 0.8,
-			ease: "power3.out",
-		});
-
-		gsap.from(".set-section .small-menu-card", {
-			scrollTrigger: {
-				trigger: ".set-section",
+				trigger: ".tab-content",
 				start: "top 85%",
 			},
 			y: 40,
@@ -294,102 +248,6 @@ export default function MenuPreview(): React.ReactElement {
 							</div>
 						);
 					})}
-				</div>
-
-				{/* Burger Section */}
-				<div className="burger-section flex flex-col gap-6">
-					<div className="flex flex-col gap-3">
-						<span className="text-xs font-semibold text-[#999999] tracking-[2px]">
-							BURGER
-						</span>
-						<div className="w-full h-px bg-[#E5E5E5]" />
-					</div>
-					<div className="flex flex-wrap gap-6">
-						{burgerMenus.map((menu) => (
-							<div
-								key={menu.name}
-								className="small-menu-card w-[calc(50%-12px)] sm:w-[200px] rounded-2xl bg-[#F5F5F5] overflow-hidden transition-transform hover:scale-[1.02]"
-							>
-								<div className="relative w-full h-[150px] bg-[#E0E0E0]">
-									<Image
-										src={menu.image}
-										alt={menu.name}
-										fill
-										className="object-cover"
-									/>
-								</div>
-								<div className="p-4">
-									<h3 className="text-base font-semibold text-[#0D0D0D]">
-										{menu.name}
-									</h3>
-								</div>
-							</div>
-						))}
-					</div>
-				</div>
-
-				{/* Side Section */}
-				<div className="side-section flex flex-col gap-6">
-					<div className="flex flex-col gap-3">
-						<span className="text-xs font-semibold text-[#999999] tracking-[2px]">
-							SIDE
-						</span>
-						<div className="w-full h-px bg-[#E5E5E5]" />
-					</div>
-					<div className="flex flex-wrap gap-6">
-						{sideMenus.map((menu) => (
-							<div
-								key={menu.name}
-								className="small-menu-card w-[calc(50%-12px)] sm:w-[200px] rounded-2xl bg-[#F5F5F5] overflow-hidden transition-transform hover:scale-[1.02]"
-							>
-								<div className="relative w-full h-[150px] bg-[#E0E0E0]">
-									<Image
-										src={menu.image}
-										alt={menu.name}
-										fill
-										className="object-cover"
-									/>
-								</div>
-								<div className="p-4">
-									<h3 className="text-base font-semibold text-[#0D0D0D]">
-										{menu.name}
-									</h3>
-								</div>
-							</div>
-						))}
-					</div>
-				</div>
-
-				{/* Set Section */}
-				<div className="set-section flex flex-col gap-6">
-					<div className="flex flex-col gap-3">
-						<span className="text-xs font-semibold text-[#999999] tracking-[2px]">
-							SET
-						</span>
-						<div className="w-full h-px bg-[#E5E5E5]" />
-					</div>
-					<div className="flex flex-wrap gap-6">
-						{setMenus.map((menu) => (
-							<div
-								key={menu.name}
-								className="small-menu-card w-[calc(50%-12px)] sm:w-[200px] rounded-2xl bg-[#F5F5F5] overflow-hidden transition-transform hover:scale-[1.02]"
-							>
-								<div className="relative w-full h-[150px] bg-[#E0E0E0]">
-									<Image
-										src={menu.image}
-										alt={menu.name}
-										fill
-										className="object-cover"
-									/>
-								</div>
-								<div className="p-4">
-									<h3 className="text-base font-semibold text-[#0D0D0D]">
-										{menu.name}
-									</h3>
-								</div>
-							</div>
-						))}
-					</div>
 				</div>
 			</div>
 		</section>
