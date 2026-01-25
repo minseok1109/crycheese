@@ -1,8 +1,12 @@
 "use client";
 
+import { useState } from "react";
+
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap/register";
 import Image from "next/image";
+
+type TabType = "BURGER" | "SIDE" | "SET";
 
 interface MenuItem {
 	name: string;
@@ -24,22 +28,29 @@ const recommendedMenus: MenuItem[] = [
 	},
 ];
 
-const allMenuCategories = [
-	{
-		category: "버거",
-		items: ["싱글치즈버거", "더블치즈버거", "치킨샌드위치", "불치킨샌드위치"],
-	},
-	{
-		category: "세트",
-		items: ["치즈버거세트", "치킨샌드위치세트"],
-	},
-	{
-		category: "사이드",
-		items: ["크라이치킨접시", "치즈감자", "치킨핑거", "불치킨핑거"],
-	},
+const burgerMenus: MenuItem[] = [
+	{ name: "싱글치즈버거", image: "/single_cheeseburger.png" },
+	{ name: "더블치즈버거", image: "/double_cheeseburger.png" },
+	{ name: "치킨샌드위치", image: "/menu-chicken-sandwich.png" },
+	{ name: "불치킨샌드위치", image: "/spicy_chicken_burger.png" },
+];
+
+const sideMenus: MenuItem[] = [
+	{ name: "크라이치킨접시", image: "/menu-cry-chicken.png" },
+	{ name: "치즈감자", image: "/menu-cheese-potato.png" },
+	{ name: "치킨핑거", image: "/menu-chicken-finger.png" },
+];
+
+const setMenus: MenuItem[] = [
+	{ name: "싱글치즈버거세트", image: "/menu-single-set.png" },
+	{ name: "더블치즈버거세트", image: "/menu-double-set.png" },
+	{ name: "치킨샌드위치세트", image: "/menu-chicken-set.png" },
+	{ name: "불치킨샌드위치세트", image: "/menu-spicy-chicken-set.png" },
 ];
 
 export default function MenuPreview(): React.ReactElement {
+	const [activeTab, setActiveTab] = useState<TabType>("BURGER");
+
 	useGSAP(() => {
 		gsap.from(".menu-title", {
 			scrollTrigger: {
@@ -75,14 +86,72 @@ export default function MenuPreview(): React.ReactElement {
 			ease: "power3.out",
 		});
 
-		gsap.from(".all-menu-section", {
+		gsap.from(".burger-section", {
 			scrollTrigger: {
-				trigger: ".all-menu-section",
+				trigger: ".burger-section",
 				start: "top 85%",
 			},
 			y: 30,
 			opacity: 0,
 			duration: 0.8,
+			ease: "power3.out",
+		});
+
+		gsap.from(".burger-section .small-menu-card", {
+			scrollTrigger: {
+				trigger: ".burger-section",
+				start: "top 85%",
+			},
+			y: 40,
+			opacity: 0,
+			duration: 0.8,
+			stagger: 0.1,
+			ease: "power3.out",
+		});
+
+		gsap.from(".side-section", {
+			scrollTrigger: {
+				trigger: ".side-section",
+				start: "top 85%",
+			},
+			y: 30,
+			opacity: 0,
+			duration: 0.8,
+			ease: "power3.out",
+		});
+
+		gsap.from(".side-section .small-menu-card", {
+			scrollTrigger: {
+				trigger: ".side-section",
+				start: "top 85%",
+			},
+			y: 40,
+			opacity: 0,
+			duration: 0.8,
+			stagger: 0.1,
+			ease: "power3.out",
+		});
+
+		gsap.from(".set-section", {
+			scrollTrigger: {
+				trigger: ".set-section",
+				start: "top 85%",
+			},
+			y: 30,
+			opacity: 0,
+			duration: 0.8,
+			ease: "power3.out",
+		});
+
+		gsap.from(".set-section .small-menu-card", {
+			scrollTrigger: {
+				trigger: ".set-section",
+				start: "top 85%",
+			},
+			y: 40,
+			opacity: 0,
+			duration: 0.8,
+			stagger: 0.1,
 			ease: "power3.out",
 		});
 	}, []);
@@ -133,26 +202,97 @@ export default function MenuPreview(): React.ReactElement {
 					</div>
 				</div>
 
-				{/* All Menu Section */}
-				<div className="all-menu-section flex flex-col gap-6">
-					{/* Label */}
+				{/* Burger Section */}
+				<div className="burger-section flex flex-col gap-6">
 					<div className="flex flex-col gap-3">
 						<span className="text-xs font-semibold text-[#999999] tracking-[2px]">
-							ALL MENU
+							BURGER
 						</span>
 						<div className="w-full h-px bg-[#E5E5E5]" />
 					</div>
+					<div className="flex flex-wrap gap-6">
+						{burgerMenus.map((menu) => (
+							<div
+								key={menu.name}
+								className="small-menu-card w-[calc(50%-12px)] sm:w-[200px] rounded-2xl bg-[#F5F5F5] overflow-hidden transition-transform hover:scale-[1.02]"
+							>
+								<div className="relative w-full h-[150px] bg-[#E0E0E0]">
+									<Image
+										src={menu.image}
+										alt={menu.name}
+										fill
+										className="object-cover"
+									/>
+								</div>
+								<div className="p-4">
+									<h3 className="text-base font-semibold text-[#0D0D0D]">
+										{menu.name}
+									</h3>
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
 
-					{/* Menu List */}
-					<div className="flex flex-col gap-4">
-						{allMenuCategories.map((cat) => (
-							<div key={cat.category} className="flex flex-col sm:flex-row gap-2 sm:gap-4">
-								<span className="text-sm font-semibold text-[#999999] min-w-[60px]">
-									{cat.category}
-								</span>
-								<span className="text-sm font-normal text-[#666666]">
-									{cat.items.join(" · ")}
-								</span>
+				{/* Side Section */}
+				<div className="side-section flex flex-col gap-6">
+					<div className="flex flex-col gap-3">
+						<span className="text-xs font-semibold text-[#999999] tracking-[2px]">
+							SIDE
+						</span>
+						<div className="w-full h-px bg-[#E5E5E5]" />
+					</div>
+					<div className="flex flex-wrap gap-6">
+						{sideMenus.map((menu) => (
+							<div
+								key={menu.name}
+								className="small-menu-card w-[calc(50%-12px)] sm:w-[200px] rounded-2xl bg-[#F5F5F5] overflow-hidden transition-transform hover:scale-[1.02]"
+							>
+								<div className="relative w-full h-[150px] bg-[#E0E0E0]">
+									<Image
+										src={menu.image}
+										alt={menu.name}
+										fill
+										className="object-cover"
+									/>
+								</div>
+								<div className="p-4">
+									<h3 className="text-base font-semibold text-[#0D0D0D]">
+										{menu.name}
+									</h3>
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
+
+				{/* Set Section */}
+				<div className="set-section flex flex-col gap-6">
+					<div className="flex flex-col gap-3">
+						<span className="text-xs font-semibold text-[#999999] tracking-[2px]">
+							SET
+						</span>
+						<div className="w-full h-px bg-[#E5E5E5]" />
+					</div>
+					<div className="flex flex-wrap gap-6">
+						{setMenus.map((menu) => (
+							<div
+								key={menu.name}
+								className="small-menu-card w-[calc(50%-12px)] sm:w-[200px] rounded-2xl bg-[#F5F5F5] overflow-hidden transition-transform hover:scale-[1.02]"
+							>
+								<div className="relative w-full h-[150px] bg-[#E0E0E0]">
+									<Image
+										src={menu.image}
+										alt={menu.name}
+										fill
+										className="object-cover"
+									/>
+								</div>
+								<div className="p-4">
+									<h3 className="text-base font-semibold text-[#0D0D0D]">
+										{menu.name}
+									</h3>
+								</div>
 							</div>
 						))}
 					</div>
