@@ -60,20 +60,20 @@ export default function ClientsSection(): React.ReactElement {
 	}, []);
 
 	return (
-		<section className="clients-section bg-white py-[100px] px-20">
+		<section className="clients-section bg-white py-[60px] px-5 md:py-[100px] md:px-20">
 			<div className="flex flex-col items-center gap-[60px]">
 				{/* Header */}
 				<div className="clients-header flex flex-col items-center gap-4">
 					<span className="text-[13px] font-semibold text-primary tracking-[3px]">
 						CLIENTS
 					</span>
-					<h2 className="text-[44px] font-bold text-[#0D0D0D] text-center">
+					<h2 className="text-[28px] md:text-[44px] font-bold text-[#0D0D0D] text-center">
 						함께한 고객사
 					</h2>
 				</div>
 
 				{/* Card Grid */}
-				<div className="clients-grid w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+				<div className="clients-grid w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
 					{clients.map((client) => (
 						<div
 							key={client.name}
