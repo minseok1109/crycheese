@@ -49,9 +49,28 @@ export default function ClientsSection(): React.ReactElement {
 					</h2>
 				</div>
 
-				{/* Grid - placeholder */}
-				<div className="clients-grid">
-					{/* 카드 그리드는 Task 2에서 구현 */}
+				{/* Card Grid */}
+				<div className="clients-grid w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+					{clients.map((client) => (
+						<div
+							key={client.name}
+							className="client-card flex flex-col items-center gap-4"
+						>
+							{/* Image placeholder */}
+							<div className="w-full aspect-[4/3] rounded-xl bg-[#F5F5F5] overflow-hidden transition-transform duration-300 hover:scale-105">
+								{/* 실제 이미지는 추후 추가 */}
+							</div>
+							{/* Client info */}
+							<div className="flex flex-col items-center gap-1">
+								<span className="text-lg font-bold text-[#0D0D0D] text-center">
+									{client.name}
+								</span>
+								<span className="text-sm text-[#666666] text-center">
+									{client.event}
+								</span>
+							</div>
+						</div>
+					))}
 				</div>
 			</div>
 		</section>
