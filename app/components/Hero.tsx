@@ -7,7 +7,6 @@ import { useRef } from "react";
 import { gsap } from "@/lib/gsap/register";
 import { scrollToElement } from "@/lib/utils/scroll";
 
-
 export default function Hero(): React.ReactElement {
 	const containerRef = useRef<HTMLElement>(null);
 
@@ -115,7 +114,7 @@ export default function Hero(): React.ReactElement {
 						className="hero-cta inline-flex items-center gap-3 self-start rounded-full bg-primary px-9 py-[18px] text-lg font-semibold text-[#0D0D0D] transition-all hover:bg-primary-dark hover:shadow-lg active:scale-95"
 						onClick={(e) => scrollToElement(e, "#inquiry")}
 					>
-						<span>단체 상담하기</span>
+						<span>문의하기</span>
 						<span>→</span>
 					</Link>
 
@@ -126,12 +125,12 @@ export default function Hero(): React.ReactElement {
 				</div>
 
 				{/* Right: Image */}
-				<div className="hero-image relative w-full max-w-[280px] lg:max-w-[500px] aspect-square">
+				<div className="hero-image relative w-full max-w-[480px] lg:max-w-[600px] aspect-4/3">
 					<Image
-						src="/double_cheeseburger.png"
-						alt="더블 치즈버거"
+						src="/crycheese/hero-burger.jpg"
+						alt="크라이치즈버거"
 						fill
-						className="object-contain"
+						className="object-cover"
 						priority
 					/>
 				</div>
