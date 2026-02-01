@@ -1,9 +1,6 @@
 export default function Footer(): React.ReactElement {
 	return (
-		<footer
-			id="footer"
-			className="bg-[#F5F5F5] py-20 px-6 lg:px-[120px]"
-		>
+		<footer id="footer" className="bg-[#F5F5F5] py-20 px-6 lg:px-[120px]">
 			<div className="flex flex-col gap-12">
 				{/* CTA Card */}
 				<div className="bg-white border border-[#EEEEEE] rounded-2xl p-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
@@ -12,10 +9,9 @@ export default function Footer(): React.ReactElement {
 					</h3>
 					<a
 						href="/crycheese-catering.pdf"
-						download
+						download="[크라이치즈버거]단체주문 소개서.pdf"
 						className="flex items-center gap-2 rounded-lg bg-primary px-7 py-3.5 text-sm font-bold text-white hover:bg-primary/90 transition-colors"
 					>
-						<span>📄</span>
 						<span>소개서 다운로드</span>
 					</a>
 				</div>
@@ -25,21 +21,27 @@ export default function Footer(): React.ReactElement {
 
 				{/* Info Section */}
 				<div className="flex flex-col gap-4">
-					<h4 className="text-xl font-bold text-[#0D0D0D]">
-						크라이치즈버거
-					</h4>
+					<h4 className="text-xl font-bold text-[#0D0D0D]">크라이치즈버거</h4>
 					<div className="flex flex-col gap-2">
 						<div className="flex gap-4">
-							<span className="text-sm font-normal text-[#999999]">고객센터</span>
-							<span className="text-sm font-normal text-[#333333]">000-0000-0000</span>
+							<span className="text-sm font-normal text-[#999999]">전화</span>
+							<span className="text-sm font-normal text-[#333333]">
+								010-5643-1700
+							</span>
 						</div>
 						<div className="flex gap-4">
 							<span className="text-sm font-normal text-[#999999]">이메일</span>
-							<span className="text-sm font-normal text-[#333333]">contact@crycheese.com</span>
+							<span className="text-sm font-normal text-[#333333]">
+								hmjin@crycheeseburger.com
+							</span>
 						</div>
 						<div className="flex gap-4">
-							<span className="text-sm font-normal text-[#999999]">운영시간</span>
-							<span className="text-sm font-normal text-[#333333]">평일 09:00 - 18:00</span>
+							<span className="text-sm font-normal text-[#999999]">
+								운영시간
+							</span>
+							<span className="text-sm font-normal text-[#333333]">
+								10:00 ~ 18:00
+							</span>
 						</div>
 					</div>
 				</div>

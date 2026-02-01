@@ -3,9 +3,9 @@
 import { useGSAP } from "@gsap/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
-import { gsap } from "@/lib/gsap/register";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { gsap } from "@/lib/gsap/register";
 import { type InquiryFormData, inquirySchema } from "@/lib/schemas/inquiry";
 
 const INPUT_STYLES =

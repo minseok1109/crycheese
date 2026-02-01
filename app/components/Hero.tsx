@@ -125,9 +125,9 @@ export default function Hero(): React.ReactElement {
 				</div>
 
 				{/* Right: Image */}
-				<div className="hero-image relative w-full max-w-[480px] lg:max-w-[600px] aspect-4/3">
+				<div className="hero-image relative w-full max-w-[480px] lg:max-w-[800px] aspect-4/3">
 					<Image
-						src="/crycheese/hero-burger.jpg"
+						src="/hero-burgers.jpeg"
 						alt="크라이치즈버거"
 						fill
 						className="object-cover"

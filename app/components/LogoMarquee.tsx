@@ -68,7 +68,8 @@ export default function LogoMarquee(): React.ReactElement {
 		>
 			{/* 타이틀 */}
 			<h2 className="text-center text-3xl font-bold text-black mb-10">
-				다양한 기업의 행사를 책임졌습니다
+				다양한 기업 행사를 책임져온,
+				<br /> 믿고 맡길 수 있는 파트너입니다.
 			</h2>
 
 			{/* 두 개의 동일한 로고 row를 나란히 배치 */}

@@ -1,26 +1,83 @@
 "use client";
 
 import { useGSAP } from "@gsap/react";
+import Image from "next/image";
 import { gsap } from "@/lib/gsap/register";
 
-const supports = [
+type SupportItem = {
+	title: string;
+	description: string;
+	image?: string;
+	images?: string[];
+};
+
+const supports: SupportItem[] = [
 	{
 		title: "홍보 포스터",
-		description: "사내 게시판용 행사 알림 포스터를 제작해드립니다.",
-		icon: "📢",
+		description: "행사가 빛날 수 있도록 맞춤형 포스터를 제작해드립니다.",
+		image: "/event-support/poster.png",
 	},
 	{
 		title: "엉엉이 인형탈",
 		description:
 			"크라이치즈버거의 마스코트 엉엉이가 행사 분위기를 띄워드립니다.",
-		icon: "🧸",
+		image: "/event-support/mascot.png",
 	},
 	{
 		title: "럭키드로우 쿠폰",
 		description: "행사의 재미를 더할 수 있는 경품 이벤트를 지원합니다.",
-		icon: "🎁",
+		images: [
+			"/event-support/coupon-fries.png",
+			"/event-support/coupon-burger.png",
+		],
 	},
 ];
+
+function SupportImage({ item }: { item: SupportItem }) {
+	if (item.images) {
+		// 쿠폰 스택 레이아웃
+		return (
+			<div className="relative w-[320px] h-[220px]">
+				<div className="absolute inset-0 flex items-center justify-center">
+					<Image
+						src={item.images[0]}
+						alt="치즈감자 무료교환권"
+						width={280}
+						height={170}
+						className="absolute -rotate-6 shadow-md"
+						style={{ objectFit: "contain" }}
+					/>
+					<Image
+						src={item.images[1]}
+						alt="치즈버거 무료교환권"
+						width={280}
+						height={170}
+						className="absolute rotate-6 shadow-md"
+						style={{ objectFit: "contain" }}
+					/>
+				</div>
+			</div>
+		);
+	}
+
+	if (item.image) {
+		const isPoster = item.title === "홍보 포스터";
+		return (
+			<div
+				className={`relative overflow-hidden ${isPoster ? "w-[220px] h-[320px]" : "w-[280px] h-[280px]"}`}
+			>
+				<Image
+					src={item.image}
+					alt={item.title}
+					fill
+					className="object-contain"
+				/>
+			</div>
+		);
+	}
+
+	return null;
+}
 
 export default function EventSupportSection(): React.ReactElement {
 	useGSAP(() => {
@@ -50,9 +107,11 @@ export default function EventSupportSection(): React.ReactElement {
 
 	return (
 		<section className="event-section py-20 px-6 lg:px-[120px]">
-			<div className="w-full rounded-[32px] p-10 lg:p-[60px] lg:px-12"
+			<div
+				className="w-full rounded-[32px] p-10 lg:p-[60px] lg:px-12"
 				style={{
-					background: "linear-gradient(180deg, #FFF8E1 0%, #FFFBF0 50%, #FFF5E0 100%)"
+					background:
+						"linear-gradient(180deg, #FFF8E1 0%, #FFFBF0 50%, #FFF5E0 100%)",
 				}}
 			>
 				<div className="flex flex-col items-center gap-12">
@@ -70,18 +129,19 @@ export default function EventSupportSection(): React.ReactElement {
 					</div>
 
 					{/* Support Cards */}
-					<div className="support-grid flex flex-col sm:flex-row items-center justify-center gap-6 w-full">
+					<div className="support-grid flex flex-col sm:flex-row items-stretch justify-center gap-6 w-full">
 						{supports.map((item) => (
 							<div
 								key={item.title}
-								className="support-card flex flex-col items-center gap-5 bg-white rounded-3xl p-6 pt-6 w-full sm:w-[220px] shadow-primary"
+								className="support-card flex flex-col items-center gap-6 bg-white p-8 w-full flex-1 shadow-primary"
 							>
-								<div className="w-[72px] h-[72px] rounded-full flex items-center justify-center text-3xl"
+								<div
+									className="flex items-center justify-center"
 									style={{
-										background: "linear-gradient(180deg, #FFF3E0 0%, #FFE0B2 100%)"
+										minHeight: "320px",
 									}}
 								>
-									{item.icon}
+									<SupportImage item={item} />
 								</div>
 								<div className="flex flex-col items-center gap-2 text-center">
 									<h3 className="text-lg font-bold text-[#0D0D0D]">
