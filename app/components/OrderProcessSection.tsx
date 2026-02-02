@@ -58,10 +58,10 @@ export default function OrderProcessSection(): React.ReactElement {
 	}, []);
 
 	return (
-		<section className="process-section bg-[#F5F5F5] py-[100px] px-6 lg:px-[120px]">
-			<div className="flex flex-col gap-12">
+		<section className="process-section bg-[#F5F5F5] py-[60px] px-6 lg:px-[80px]">
+			<div className="flex flex-col gap-8">
 				{/* Title */}
-				<h2 className="process-title text-[42px] font-bold text-[#0D0D0D]">
+				<h2 className="process-title text-[28px] font-bold text-[#0D0D0D]">
 					주문 프로세스
 				</h2>
 
@@ -70,11 +70,11 @@ export default function OrderProcessSection(): React.ReactElement {
 					{steps.map((step, index) => (
 						<div key={step.number} className="contents">
 							{/* Step */}
-							<div className="process-step flex-1 flex flex-col items-center gap-5">
-								<span className="text-[48px] font-bold text-primary">
+							<div className="process-step flex-1 flex flex-col items-center gap-3">
+								<span className="text-[32px] font-bold text-primary">
 									{step.number}
 								</span>
-								<p className="text-xl font-semibold text-[#0D0D0D] text-center leading-[1.4] whitespace-pre-line">
+								<p className="text-base font-semibold text-[#0D0D0D] text-center leading-[1.4] whitespace-pre-line">
 									{step.title}
 								</p>
 							</div>
@@ -83,11 +83,11 @@ export default function OrderProcessSection(): React.ReactElement {
 							{index < steps.length - 1 && (
 								<>
 									{/* Desktop Line */}
-									<div className="process-line hidden lg:flex items-center justify-center w-[100px] h-[60px]">
+									<div className="process-line hidden lg:flex items-center justify-center w-[60px] h-[40px]">
 										<div className="w-full h-0.5 bg-[#E5E5E5]" />
 									</div>
 									{/* Mobile Line */}
-									<div className="process-line lg:hidden flex items-center justify-center h-[60px] w-[2px]">
+									<div className="process-line lg:hidden flex items-center justify-center h-[40px] w-[2px]">
 										<div className="h-full w-0.5 bg-[#E5E5E5]" />
 									</div>
 								</>

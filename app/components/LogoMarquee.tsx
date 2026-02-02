@@ -26,13 +26,13 @@ function LogoRow(): React.ReactElement {
 			{logos.map((logo) => (
 				<div
 					key={logo.src}
-					className="shrink-0 flex items-center justify-center w-[160px] h-12"
+					className="shrink-0 flex items-center justify-center w-[240px] h-[72px]"
 				>
 					<Image
 						src={logo.src}
 						alt={logo.alt}
-						width={160}
-						height={48}
+						width={240}
+						height={72}
 						className="object-contain max-h-full"
 					/>
 				</div>
@@ -64,12 +64,11 @@ export default function LogoMarquee(): React.ReactElement {
 	return (
 		<section
 			ref={containerRef}
-			className="w-full bg-white py-16 overflow-hidden"
+			className="flex flex-col gap-10 w-full bg-white py-16 overflow-hidden"
 		>
 			{/* 타이틀 */}
-			<h2 className="text-center text-3xl font-bold text-black mb-10">
-				다양한 기업 행사를 책임져온,
-				<br /> 믿고 맡길 수 있는 파트너입니다.
+			<h2 className="text-center text-3xl font-bold text-black mb-9">
+				수많은 기업이 먼저 함께 했습니다
 			</h2>
 
 			{/* 두 개의 동일한 로고 row를 나란히 배치 */}

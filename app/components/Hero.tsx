@@ -4,6 +4,7 @@ import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
+import CountUp from "@/app/components/ui/CountUp";
 import { gsap } from "@/lib/gsap/register";
 import { scrollToElement } from "@/lib/utils/scroll";
 
@@ -90,18 +91,17 @@ export default function Hero(): React.ReactElement {
 					{/* Title */}
 					<div>
 						<h1 className="text-[56px] font-bold leading-[1.1] text-[#0D0D0D] tracking-tight">
-							<span className="hero-title block">메뉴 고민부터</span>
-							<span className="hero-title block">현장 배부까지</span>
+							<span className="hero-title block">
+								<CountUp to={1471} separator="," duration={1} from={1000} />
+								개의 행사가 증명한 단체 주문 파트너
+							</span>
 						</h1>
 					</div>
 
 					{/* Subtitle */}
 					<div className="flex flex-col gap-2">
 						<p className="hero-subtitle text-2xl font-normal text-[#666666]">
-							실패 없는 행사를 위한
-						</p>
-						<p className="hero-subtitle text-2xl font-normal text-[#666666]">
-							최고의 선택.
+							실패 없는 행사의 완성, 크라이치즈버거.
 						</p>
 					</div>
 
@@ -109,14 +109,23 @@ export default function Hero(): React.ReactElement {
 					<div className="hero-divider w-[60px] h-[2px] bg-[#E5E5E5] origin-left" />
 
 					{/* CTA Button */}
-					<Link
-						href="#inquiry"
-						className="hero-cta inline-flex items-center gap-3 self-start rounded-full bg-primary px-9 py-[18px] text-lg font-semibold text-[#0D0D0D] transition-all hover:bg-primary-dark hover:shadow-lg active:scale-95"
-						onClick={(e) => scrollToElement(e, "#inquiry")}
-					>
-						<span>문의하기</span>
-						<span>→</span>
-					</Link>
+					<div className="flex gap-4 items-center">
+						<Link
+							href="#inquiry"
+							className="hero-cta shrink-0 inline-flex items-center gap-3 self-start rounded-full bg-primary px-9 py-[18px] text-lg font-semibold text-[#0D0D0D] transition-all hover:bg-primary-dark hover:shadow-lg active:scale-95"
+							onClick={(e) => scrollToElement(e, "#inquiry")}
+						>
+							<span>문의하기</span>
+							<span>→</span>
+						</Link>
+						<a
+							href="/crycheese-catering.pdf"
+							download="[크라이치즈버거]단체주문 소개서.pdf"
+							className="hero-cta shrink-0 inline-flex items-center gap-3 self-start rounded-full bg-primary px-9 py-[18px] text-lg font-semibold text-[#0D0D0D] transition-all hover:bg-primary-dark hover:shadow-lg active:scale-95"
+						>
+							<span>소개서 다운로드</span>
+						</a>
+					</div>
 
 					{/* Info Text */}
 					<p className="hero-info text-sm font-medium text-[#999999]">

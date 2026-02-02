@@ -1,15 +1,13 @@
-import CaseStudySection from "./components/CaseStudySection";
 import EventGallery from "./components/EventGallery";
 import EventSupportSection from "./components/EventSupportSection";
 import FAQSection from "./components/FAQSection";
-import FeatureSection from "./components/FeatureSection";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import InquiryForm from "./components/InquiryForm";
 import LogoMarquee from "./components/LogoMarquee";
-import MenuPreview from "./components/MenuPreview";
 import OrderProcessSection from "./components/OrderProcessSection";
+import WhyCrySection from "./components/WhyCrySection";
 
 export default function Home(): React.ReactElement {
 	return (
@@ -18,10 +16,11 @@ export default function Home(): React.ReactElement {
 			<main>
 				<Hero />
 				<LogoMarquee />
-				<FeatureSection />
+				<WhyCrySection />
+				{/* <FeatureSection /> */}
 				<EventSupportSection />
-				<MenuPreview />
-				<CaseStudySection />
+				{/* <MenuPreview /> */}
+				{/* <CaseStudySection /> */}
 				<EventGallery />
 				<OrderProcessSection />
 				<InquiryForm />
