@@ -5,9 +5,9 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --primary: oklch(0.205 0 0);
+  --primary: #F8B81C;
   --primary-dark: #E5A517;
-  --primary-foreground: oklch(0.985 0 0);
+  --primary-foreground: #0D0D0D;
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
