@@ -115,7 +115,7 @@ export default function Hero(): React.ReactElement {
 							className="hero-cta shrink-0 inline-flex items-center gap-3 self-start rounded-full bg-primary px-9 py-[18px] text-lg font-semibold text-[#0D0D0D] transition-all hover:bg-primary-dark hover:shadow-lg active:scale-95"
 							onClick={(e) => scrollToElement(e, "#inquiry")}
 						>
-							<span>문의하기</span>
+							<span>문의하기 (30초 완성)</span>
 							<span>→</span>
 						</Link>
 						<a
