@@ -1,7 +1,7 @@
 "use client";
 
 import { useGSAP } from "@gsap/react";
-import { BadgeCheck, Headset, type LucideIcon, Timer } from "lucide-react";
+import { Calculator, type LucideIcon, ShieldCheck, Zap } from "lucide-react";
 import { useRef } from "react";
 import { gsap, ScrollTrigger } from "@/lib/gsap/register";
 
@@ -13,21 +13,19 @@ type ValueCard = {
 
 const valueCards: ValueCard[] = [
 	{
-		icon: Headset,
-		title: "1:1 전담 매니저 매칭",
-		description: "견적부터 배송까지,\n전화 한 통이면 끝입니다.",
+		icon: Zap,
+		title: "3분이면 주문 끝납니다",
+		description: "복잡한 절차 없이,\n간단한 문의로 주문이 완료됩니다.",
 	},
 	{
-		icon: BadgeCheck,
-		title: "검증된 단체 맞춤 메뉴",
-		description:
-			"7만 명이 검증한 호불호 없는 맛,\n행사 성격에 맞는 최적의 구성을 제안합니다.",
+		icon: Calculator,
+		title: "예산에 맞춰 저희가 다 짜드립니다",
+		description: "예산을 알려주시면,\n최적의 메뉴 구성을 제안해드립니다.",
 	},
 	{
-		icon: Timer,
-		title: "정시 도착 보장",
-		description:
-			"행사 지연은 이제 그만,\n전문 배송팀이 정시 도착을 보장합니다.",
+		icon: ShieldCheck,
+		title: "절대 안늦습니다",
+		description: "약속한 시간, 약속한 장소.\n전문 배송팀이 책임집니다.",
 	},
 ];
 
@@ -79,7 +77,7 @@ export default function WhyCrySection() {
 	return (
 		<section
 			ref={sectionRef}
-			className="bg-white py-[100px] px-6 lg:px-[120px]"
+			className="bg-white py-[100px] px-6 lg:px-[120px] overflow-hidden"
 		>
 			<div className="flex flex-col items-center gap-16 max-w-[1200px] mx-auto">
 				{/* 섹션 헤더 */}
@@ -91,7 +89,7 @@ export default function WhyCrySection() {
 						WHY CRY CHEESE BURGER
 					</span>
 					<h2 className="text-[#0D0D0D] text-2xl md:text-4xl lg:text-[44px] font-bold leading-tight">
-						행사 담당자가 크라이치즈버거만 고집하는 이유
+						도시락 대신 크라이 하는 이유
 					</h2>
 				</div>
 

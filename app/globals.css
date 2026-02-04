@@ -2,8 +2,6 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
 @import "tailwindcss";
 
-@custom-variant dark (&:is(.dark *));
-
 :root {
   --primary: #F8B81C;
   --primary-dark: #E5A517;
@@ -96,20 +94,6 @@
   --radius-4xl: calc(var(--radius) + 16px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --primary: #F8B81C;
-    --primary-foreground: #000000;
-    --secondary: #ffffff;
-    --secondary-foreground: #000000;
-    --muted: #18181b;
-    --muted-foreground: #a1a1aa;
-    --border: #27272a;
-    --input: #27272a;
-    --ring: #F8B81C;
-  }
-}
-
 html {
   scroll-behavior: smooth;
 }
@@ -140,24 +124,12 @@ body {
     @apply backdrop-blur-xl bg-white/80 border-white/20;
   }
 
-  .dark .glass {
-    @apply bg-black/80 border-white/10;
-  }
-
   .glass-card {
     @apply bg-white/60 backdrop-blur-lg border border-white/20 shadow-xl;
   }
 
-  .dark .glass-card {
-    @apply bg-zinc-900/60 border-zinc-800/50;
-  }
-
   .text-gradient {
     @apply bg-clip-text text-transparent bg-linear-to-r from-zinc-900 to-zinc-600;
-  }
-
-  .dark .text-gradient {
-    @apply bg-linear-to-r from-white to-zinc-400;
   }
 
   .mask-gradient-b {
@@ -219,40 +191,6 @@ body {
   h1, h2, h3, h4, h5, h6 {
     @apply tracking-tight text-balance font-bold;
   }
-}
-
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
 }
 
 @layer base {

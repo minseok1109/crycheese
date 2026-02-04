@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { inquirySchema } from "@/lib/schemas/inquiry";
 import { appendToGoogleSheet } from "@/lib/services/google-sheets";
+import { sendSlackNotification } from "@/lib/services/slack";
 
 export async function POST(request: Request): Promise<NextResponse> {
 	try {
@@ -15,57 +16,11 @@ export async function POST(request: Request): Promise<NextResponse> {
 			);
 		}
 
-		const {
-			name,
-			contact,
-			email,
-			referralSource,
-			referrerName,
-			companyName,
-			eventType,
-			eventTypeDetail,
-			deliveryDate,
-			deliveryTime,
-			deliveryAddress,
-			paymentMethod,
-			message,
-		} = result.data;
-
-		await appendToGoogleSheet(result.data);
-
-		// Slack 알림 전송
-		const webhookUrl = process.env.SLACK_WEBHOOK_URL;
-		if (webhookUrl) {
-			const slackMessage = `📋 새 단체 주문 접수
-			
-• 담당자: ${name}
-• 단체명: ${companyName} (${eventType || "미지정"})
-• 행사유형: ${eventTypeDetail || "미지정"}
-• 연락처: ${contact}
-• 이메일: ${email}
-• 유입경로: ${referralSource}${referrerName ? ` (추천인: ${referrerName})` : ""}
-
-🚚 배송 정보
-• 일시: ${deliveryDate} ${deliveryTime}
-• 주소: ${deliveryAddress}
-• 결제: ${paymentMethod}
-
-💬 문의 내용:
-${message || "(내용 없음)"}`;
-
-			const slackResponse = await fetch(webhookUrl, {
-				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({ text: slackMessage }),
-			});
-
-			if (!slackResponse.ok) {
-				console.error("Slack 메시지 전송 실패");
-				// Slack 전송 실패하더라도 클라이언트에게는 성공 응답을 보내는 것이 좋음 (로깅만 함)
-			}
-		} else {
-			console.log("SLACK_WEBHOOK_URL 미설정: 메시지 전송 스킵");
-		}
+		// Google Sheets 저장 & Slack 알림 병렬 처리
+		await Promise.all([
+			appendToGoogleSheet(result.data),
+			sendSlackNotification(result.data),
+		]);
 
 		return NextResponse.json({ success: true });
 	} catch (error) {

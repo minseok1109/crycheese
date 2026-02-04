@@ -83,11 +83,11 @@ export default function Hero(): React.ReactElement {
 	return (
 		<section
 			ref={containerRef}
-			className="w-full bg-white py-[100px] px-6 lg:px-[120px]"
+			className="w-full bg-white py-[100px] px-6 lg:px-[80px] xl:px-[120px] overflow-hidden"
 		>
-			<div className="flex flex-col lg:flex-row items-center gap-[60px]">
+			<div className="flex flex-col xl:flex-row items-center gap-[60px]">
 				{/* Left: Content */}
-				<div className="flex-1 flex flex-col gap-8">
+				<div className="flex-1 min-w-0 flex flex-col gap-8">
 					{/* Title */}
 					<div>
 						<h1 className="text-[56px] font-bold leading-[1.1] text-[#0D0D0D] tracking-tight">
@@ -109,10 +109,10 @@ export default function Hero(): React.ReactElement {
 					<div className="hero-divider w-[60px] h-[2px] bg-[#E5E5E5] origin-left" />
 
 					{/* CTA Button */}
-					<div className="flex gap-4 items-center">
+					<div className="flex flex-col sm:flex-row gap-4">
 						<Link
 							href="#inquiry"
-							className="hero-cta shrink-0 inline-flex items-center gap-3 self-start rounded-full bg-primary px-9 py-[18px] text-lg font-semibold text-[#0D0D0D] transition-all hover:bg-primary-dark hover:shadow-lg active:scale-95"
+							className="hero-cta inline-flex items-center justify-center gap-2 sm:gap-3 rounded-full bg-primary px-6 py-3 sm:px-9 sm:py-[18px] text-base sm:text-lg font-semibold text-[#0D0D0D] transition-all hover:bg-primary-dark hover:shadow-lg active:scale-95"
 							onClick={(e) => scrollToElement(e, "#inquiry")}
 						>
 							<span>문의하기 (30초 완성)</span>
@@ -121,7 +121,7 @@ export default function Hero(): React.ReactElement {
 						<a
 							href="/crycheese-catering.pdf"
 							download="[크라이치즈버거]단체주문 소개서.pdf"
-							className="hero-cta shrink-0 inline-flex items-center gap-3 self-start rounded-full bg-primary px-9 py-[18px] text-lg font-semibold text-[#0D0D0D] transition-all hover:bg-primary-dark hover:shadow-lg active:scale-95"
+							className="hero-cta inline-flex items-center justify-center gap-2 sm:gap-3 rounded-full bg-primary px-6 py-3 sm:px-9 sm:py-[18px] text-base sm:text-lg font-semibold text-[#0D0D0D] transition-all hover:bg-primary-dark hover:shadow-lg active:scale-95"
 						>
 							<span>소개서 다운로드</span>
 						</a>
@@ -134,7 +134,7 @@ export default function Hero(): React.ReactElement {
 				</div>
 
 				{/* Right: Image */}
-				<div className="hero-image relative w-full max-w-[480px] lg:max-w-[800px] aspect-4/3">
+				<div className="hero-image relative w-full xl:w-[45%] shrink-0 aspect-4/3">
 					<Image
 						src="/hero-burgers.jpeg"
 						alt="크라이치즈버거"
