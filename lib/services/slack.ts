@@ -8,85 +8,15 @@ export async function sendSlackNotification(data: InquiryFormData): Promise<void
 		return;
 	}
 
-	const kstTime = new Date().toLocaleString("ko-KR", { timeZone: "Asia/Seoul" });
-
 	const message = {
-		blocks: [
-			{
-				type: "header",
-				text: {
-					type: "plain_text",
-					text: "🍔 새로운 케이터링 문의",
-					emoji: true,
-				},
-			},
-			{
-				type: "section",
-				fields: [
-					{ type: "mrkdwn", text: `*접수일시*\n${kstTime}` },
-					{ type: "mrkdwn", text: `*단체명*\n${data.companyName}` },
-				],
-			},
-			{
-				type: "divider",
-			},
-			{
-				type: "section",
-				text: {
-					type: "mrkdwn",
-					text: "*📋 주문자 정보*",
-				},
-			},
-			{
-				type: "section",
-				fields: [
-					{ type: "mrkdwn", text: `*이름*\n${data.name}` },
-					{ type: "mrkdwn", text: `*연락처*\n${data.contact}` },
-					{ type: "mrkdwn", text: `*이메일*\n${data.email}` },
-					{ type: "mrkdwn", text: `*유입경로*\n${data.referralSource || "-"}` },
-				],
-			},
-			{
-				type: "divider",
-			},
-			{
-				type: "section",
-				text: {
-					type: "mrkdwn",
-					text: "*🚚 배송 정보*",
-				},
-			},
-			{
-				type: "section",
-				fields: [
-					{ type: "mrkdwn", text: `*배송일*\n${data.deliveryDate}` },
-					{ type: "mrkdwn", text: `*배송시간*\n${data.deliveryTime}` },
-					{ type: "mrkdwn", text: `*결제방법*\n${data.paymentMethod}` },
-					{ type: "mrkdwn", text: `*행사유형*\n${data.eventTypeDetail || "-"}` },
-				],
-			},
-			{
-				type: "section",
-				text: {
-					type: "mrkdwn",
-					text: `*배송주소*\n${data.deliveryAddress}`,
-				},
-			},
-			...(data.message
-				? [
-						{
-							type: "divider",
-						},
-						{
-							type: "section",
-							text: {
-								type: "mrkdwn",
-								text: `*💬 문의내용*\n${data.message}`,
-							},
-						},
-					]
-				: []),
-		],
+		text: `홈페이지 인바운드 문의가 들어왔습니다.
+1. 조직: ${data.companyName}
+2. 이름: ${data.name}
+3. 연락처: ${data.contact}
+4. 행사 일시: ${data.deliveryDate} ${data.deliveryTime}
+5. 인원 수: ${data.headcount}명
+6. 1인당 예산: ${data.budgetPerPerson.toLocaleString()}원
+7. 문의 내용: ${data.message || "-"}`,
 	};
 
 	try {

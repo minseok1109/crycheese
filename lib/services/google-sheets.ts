@@ -28,6 +28,8 @@ const SHEET_COLUMNS = [
 	"행사유형",
 	"배송일",
 	"배송시간",
+	"인원수",
+	"1인당예산",
 	"배송주소",
 	"결제방법",
 	"문의내용",
@@ -59,6 +61,8 @@ export async function appendToGoogleSheet(data: InquiryFormData): Promise<void> 
 			행사유형: data.eventTypeDetail || "",
 			배송일: data.deliveryDate,
 			배송시간: data.deliveryTime,
+			인원수: String(data.headcount),
+			"1인당예산": data.budgetPerPerson.toLocaleString(),
 			배송주소: data.deliveryAddress,
 			결제방법: data.paymentMethod,
 			문의내용: data.message || "",
@@ -66,7 +70,7 @@ export async function appendToGoogleSheet(data: InquiryFormData): Promise<void> 
 
 		await sheets.spreadsheets.values.append({
 			spreadsheetId,
-			range: "주문접수!A:N",
+			range: "주문접수!A:P",
 			valueInputOption: "USER_ENTERED",
 			requestBody: {
 				values: [SHEET_COLUMNS.map((col) => rowData[col])],
