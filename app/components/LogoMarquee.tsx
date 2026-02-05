@@ -20,20 +20,23 @@ const logos = [
   { src: "/logo/toss.png", alt: "Toss" },
 ];
 
+// gap-8 = 32px (tailwind)
+const GAP_PX = 32;
+
 function LogoRow(): React.ReactElement {
   return (
-    <div className="flex gap-16 shrink-0">
+    <div className="logo-row flex gap-8 shrink-0">
       {logos.map((logo) => (
         <div
           key={logo.src}
-          className="shrink-0 flex items-center justify-center w-[240px] h-[72px]"
+          className="shrink-0 flex items-center justify-center w-[120px] h-[48px] md:w-[180px] md:h-[60px] lg:w-[240px] lg:h-[72px]"
         >
           <Image
             src={logo.src}
             alt={logo.alt}
             width={240}
             height={72}
-            className="object-contain max-h-full"
+            className="object-contain max-h-full w-auto"
           />
         </div>
       ))}
@@ -43,16 +46,26 @@ function LogoRow(): React.ReactElement {
 
 export default function LogoMarquee(): React.ReactElement {
   const containerRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
-      // 왼쪽에서 오른쪽으로 이동 (무한 마퀴 효과)
+      const track = trackRef.current;
+      if (!track) return;
+
+      // 첫 번째 LogoRow의 너비를 계산
+      const logoRow = track.querySelector(".logo-row") as HTMLElement;
+      if (!logoRow) return;
+
+      const rowWidth = logoRow.offsetWidth + GAP_PX;
+
+      // 왼쪽에서 오른쪽으로 이동하는 무한 마퀴
       gsap.fromTo(
-        ".marquee-track",
-        { xPercent: -50 },
+        track,
+        { x: -rowWidth },
         {
-          xPercent: 0,
-          duration: 5,
+          x: 0,
+          duration: 20,
           ease: "none",
           repeat: -1,
         },
@@ -72,7 +85,7 @@ export default function LogoMarquee(): React.ReactElement {
       </h2>
 
       {/* 두 개의 동일한 로고 row를 나란히 배치 */}
-      <div className="marquee-track flex gap-16">
+      <div ref={trackRef} className="flex gap-8">
         <LogoRow />
         <LogoRow />
       </div>
