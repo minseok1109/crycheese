@@ -7,6 +7,13 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { gsap } from "@/lib/gsap/register";
 import { type InquiryFormData, inquirySchema } from "@/lib/schemas/inquiry";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const INPUT_STYLES =
   "block w-full rounded-lg border border-[#E0E0E0] bg-white px-4 py-3 h-12 text-[#0D0D0D] placeholder:text-[#AAAAAA] text-[15px] focus:ring-2 focus:ring-primary focus:border-primary transition-all";
@@ -57,9 +64,10 @@ export default function InquiryForm(): React.ReactElement {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<InquiryFormData>({
     resolver: zodResolver(inquirySchema),
+    mode: "onChange",
     defaultValues: {
       paymentMethod: "계좌이체",
     },
@@ -416,11 +424,86 @@ export default function InquiryForm(): React.ReactElement {
             </div>
           </div>
 
+          {/* Privacy Consent */}
+          <div className="flex flex-col gap-2">
+            <label className="flex items-start gap-3 cursor-pointer">
+              <input
+                type="checkbox"
+                {...register("privacyConsent")}
+                className="mt-0.5 w-5 h-5 rounded border-[#E0E0E0] text-primary focus:ring-primary cursor-pointer"
+              />
+              <span className="text-sm text-[#333333]">
+                <a
+                  href="/privacy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary underline hover:text-[#D99F17] transition-colors"
+                >
+                  개인정보 처리방침
+                </a>
+                에 동의합니다.{" "}
+                <span className="text-primary">(필수)</span>{" "}
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <button
+                      type="button"
+                      className="text-[#666666] underline hover:text-[#333333] transition-colors"
+                    >
+                      [내용보기]
+                    </button>
+                  </DialogTrigger>
+                  <DialogContent className="max-h-[80vh] overflow-y-auto">
+                    <DialogHeader>
+                      <DialogTitle>개인정보 수집 및 이용 동의</DialogTitle>
+                    </DialogHeader>
+                    <div className="space-y-4 text-sm text-[#333333]">
+                      <div>
+                        <h4 className="font-semibold text-[#0D0D0D] mb-2">
+                          1. 수집 항목
+                        </h4>
+                        <p className="text-[#666666]">
+                          이름, 연락처, 이메일, 유입경로, 단체명, 행사유형,
+                          배송일, 배송시간, 인원수, 예산, 배송주소, 결제방법
+                        </p>
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-[#0D0D0D] mb-2">
+                          2. 수집 및 이용 목적
+                        </h4>
+                        <p className="text-[#666666]">
+                          단체 주문 상담, 배송, 결제 안내
+                        </p>
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-[#0D0D0D] mb-2">
+                          3. 보유 및 이용 기간
+                        </h4>
+                        <p className="text-[#666666]">
+                          주문 완료 후 3년 (관계 법령에 따른 보존 기간)
+                        </p>
+                      </div>
+                      <div className="pt-4 border-t border-[#EEEEEE]">
+                        <p className="text-[#999999] text-xs">
+                          귀하는 위 개인정보 수집·이용에 대한 동의를 거부할
+                          권리가 있습니다. 다만, 동의를 거부할 경우 주문 상담
+                          서비스 이용이 제한됩니다.
+                        </p>
+                      </div>
+                    </div>
+                  </DialogContent>
+                </Dialog>
+              </span>
+            </label>
+            {errors.privacyConsent && (
+              <p className={ERROR_STYLES}>{errors.privacyConsent.message}</p>
+            )}
+          </div>
+
           {/* Submit Button */}
           <button
             type="submit"
-            disabled={mutation.isPending}
-            className="w-full h-14 rounded-xl bg-primary-gradient text-lg font-bold text-white shadow-[0_4px_16px_0_rgba(248,184,28,0.25)] hover:shadow-[0_6px_20px_0_rgba(248,184,28,0.35)] transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2.5"
+            disabled={mutation.isPending || !isValid}
+            className="w-full h-14 cursor-auto rounded-xl bg-primary-gradient text-lg font-bold text-white shadow-[0_4px_16px_0_rgba(248,184,28,0.25)] hover:shadow-[0_6px_20px_0_rgba(248,184,28,0.35)] transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2.5"
           >
             <span>{mutation.isPending ? "처리 중..." : "문의하기"}</span>
           </button>

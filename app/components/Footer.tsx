@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Footer(): React.ReactElement {
 	return (
 		<footer id="footer" className="bg-[#F5F5F5] py-20 px-6 lg:px-[120px]">
@@ -48,6 +50,21 @@ export default function Footer(): React.ReactElement {
 
 				{/* Divider */}
 				<div className="w-full h-px bg-[#EEEEEE]" />
+
+				{/* Legal Links */}
+				<div className="flex flex-wrap items-center gap-4 text-[13px] text-[#666666]">
+					<Link href="/terms" className="hover:text-[#333333] transition-colors">
+						이용약관
+					</Link>
+					<span className="text-[#CCCCCC]">|</span>
+					<Link href="/privacy" className="font-bold hover:text-[#333333] transition-colors">
+						개인정보처리방침
+					</Link>
+					<span className="text-[#CCCCCC]">|</span>
+					<Link href="/legal-notice" className="hover:text-[#333333] transition-colors">
+						법적고지
+					</Link>
+				</div>
 
 				{/* Copyright */}
 				<p className="text-[13px] font-normal text-[#999999]">
