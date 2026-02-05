@@ -5,6 +5,18 @@ import { Providers } from "./providers";
 export const metadata: Metadata = {
 	title: "크라이치즈버거 Catering",
 	description: "크라이치즈버거 기업 케이터링 서비스 - 성공적인 행사를 위한 완벽한 선택",
+	openGraph: {
+		title: "크라이치즈버거 Catering",
+		description:
+			"크라이치즈버거 기업 케이터링 서비스 - 성공적인 행사를 위한 완벽한 선택",
+		images: [
+			{
+				url: "/logo_character_with_text.png",
+				width: 1000,
+				height: 1000,
+			},
+		],
+	},
 	icons: {
 		icon: [
 			{ url: "/favicon.ico", sizes: "any" },
