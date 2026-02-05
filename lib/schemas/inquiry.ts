@@ -23,10 +23,10 @@ export const inquirySchema = z.object({
   deliveryDate: z.string().min(1, "배송 희망 날짜를 선택해주세요"),
   deliveryTime: z.string().min(1, "배송 희망 시간을 선택해주세요"),
   headcount: z
-    .number({ invalid_type_error: "인원 수를 입력해주세요" })
+    .number({ error: "인원 수를 입력해주세요" })
     .min(1, "인원 수를 입력해주세요"),
   budgetPerPerson: z
-    .number({ invalid_type_error: "1인당 예산을 입력해주세요" })
+    .number({ error: "1인당 예산을 입력해주세요" })
     .min(1, "1인당 예산을 입력해주세요"),
   deliveryAddress: z.string().min(1, "배송 상세 주소를 입력해주세요"),
   paymentMethod: z.enum(["계좌이체", "카드결제"]),
