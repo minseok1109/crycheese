@@ -26,6 +26,28 @@ export default function Footer(): React.ReactElement {
 					<h4 className="text-xl font-bold text-[#0D0D0D]">크라이치즈버거</h4>
 					<div className="flex flex-col gap-2">
 						<div className="flex gap-4">
+							<span className="text-sm font-normal text-[#999999]">
+								법인명
+							</span>
+							<span className="text-sm font-normal text-[#333333]">
+								(주) 크라이치즈버거
+							</span>
+						</div>
+						<div className="flex gap-4">
+							<span className="text-sm font-normal text-[#999999]">대표</span>
+							<span className="text-sm font-normal text-[#333333]">
+								신지우, 정도환
+							</span>
+						</div>
+						<div className="flex gap-4">
+							<span className="text-sm font-normal text-[#999999]">
+								사업자등록번호
+							</span>
+							<span className="text-sm font-normal text-[#333333]">
+								589-86-00356
+							</span>
+						</div>
+						<div className="flex gap-4">
 							<span className="text-sm font-normal text-[#999999]">전화</span>
 							<span className="text-sm font-normal text-[#333333]">
 								010-5643-1700
