@@ -16,7 +16,8 @@ export async function sendSlackNotification(data: InquiryFormData): Promise<void
 4. 행사 일시: ${data.deliveryDate} ${data.deliveryTime}
 5. 인원 수: ${data.headcount}명
 6. 1인당 예산: ${data.budgetPerPerson.toLocaleString()}원
-7. 문의 내용: ${data.message || "-"}`,
+7. 문의 내용: ${data.message || "-"}
+8. 배송 주소: ${data.deliveryAddress}`,
 	};
 
 	try {
