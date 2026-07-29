@@ -119,8 +119,8 @@ export default function PrivacyPage() {
               <p>
                 <strong>개인정보 보호책임자</strong>
               </p>
-              <p>이메일: hmjin@crycheeseburger.com</p>
-              <p>전화: 010-5643-1700</p>
+              <p>이메일: Jsbang@crycheeseburger.com</p>
+              <p>전화: 010-7313-4852</p>
             </div>
           </section>
 

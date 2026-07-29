@@ -50,13 +50,13 @@ export default function Footer(): React.ReactElement {
 						<div className="flex gap-4">
 							<span className="text-sm font-normal text-[#999999]">전화</span>
 							<span className="text-sm font-normal text-[#333333]">
-								010-5643-1700
+								010-7313-4852
 							</span>
 						</div>
 						<div className="flex gap-4">
 							<span className="text-sm font-normal text-[#999999]">이메일</span>
 							<span className="text-sm font-normal text-[#333333]">
-								hmjin@crycheeseburger.com
+								Jsbang@crycheeseburger.com
 							</span>
 						</div>
 						<div className="flex gap-4">

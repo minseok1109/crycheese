@@ -93,8 +93,8 @@ export default function LegalNoticePage() {
               <p>
                 <strong>크라이치즈버거</strong>
               </p>
-              <p>이메일: hmjin@crycheeseburger.com</p>
-              <p>전화: 010-5643-1700</p>
+              <p>이메일: Jsbang@crycheeseburger.com</p>
+              <p>전화: 010-7313-4852</p>
             </div>
           </section>
 
